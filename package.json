@@ -1,0 +1,72 @@
+{
+  "name": "hue-desktop",
+  "description": "Manage your Philip's Hue devices from your desktop",
+  "version": "0.1.0",
+  "private": true,
+  "homepage": "./",
+  "author": {
+    "name": "Sebastian Inman",
+    "email": "sebastian@seedscs.com",
+    "url": "https://seedscreativeservices.com"
+  },
+  "main": "public/electron.js",
+  "scripts": {
+    "start": "concurrently \"BROWSER=none react-scripts start\" \"wait-on http://localhost:3000 && electron .\"",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "postinstall": "electron-builder install-app-deps",
+    "prepack": "npm run build",
+    "pack": "electron-builder --dir",
+    "predist": "npm run build",
+    "dist": "electron-builder"
+  },
+  "dependencies": {
+    "@material-ui/core": "^4.5.2",
+    "@material-ui/icons": "^4.5.1",
+    "classnames": "^2.2.6",
+    "color": "^3.1.2",
+    "dgram": "^1.0.1",
+    "electron-is-dev": "^1.1.0",
+    "node-hue-api": "^3.4.0",
+    "philips-hue": "^1.2.0",
+    "react": "^16.11.0",
+    "react-dom": "^16.11.0",
+    "react-scripts": "3.2.0",
+    "react-transition-group": "^4.3.0"
+  },
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "concurrently": "^5.0.0",
+    "electron": "^7.0.0",
+    "electron-builder": "^21.2.0",
+    "wait-on": "^3.3.0"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "build": {
+    "productName": "Hue Desktop",
+    "appId": "com.seedscs.hue-desktop",
+    "copyright": "Copyright © 2019 ${author}",
+    "mac": {
+      "category": "public.app-category.developer-tools"
+    },
+    "files": [
+      "build/**/*",
+      "node_modules/**/*"
+    ]
+  }
+}
